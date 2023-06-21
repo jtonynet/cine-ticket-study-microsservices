@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  cine-ticket-nginx:
+    build:
+      context: ./packages/cine-ticket-nginx
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    depends_on:
+      - cine-ticket-front-site
+    networks:
+      - cine-ticket-network
+
+  cine-ticket-front-site:
+    build:
+      context: ./packages/cine-ticket-front-site
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./packages/cine-ticket-front-site/src:/usr/src/app/src
+      - ./packages/cine-ticket-front-site/dist:/usr/src/app/dist
+    environment:
+      - PORT=3000
+    command: npm run start:dev
+    tty: true
+    networks:
+      - cine-ticket-network
+
+networks:
+  cine-ticket-network:
