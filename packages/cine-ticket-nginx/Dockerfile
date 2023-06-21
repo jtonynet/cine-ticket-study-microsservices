@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:alpine
 
 # Copia o arquivo de configuração do nginx para o container
 COPY nginx.conf /etc/nginx/nginx.conf
