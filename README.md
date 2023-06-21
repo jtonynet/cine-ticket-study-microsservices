@@ -126,7 +126,7 @@ end
   <li>As APIs <b>(cine-ticket-checkout-api)</b> e <b>(cine-ticket-confirma-reserva)</b> se comunicam com seus respectivos bancos de dados para armazenar e recuperar informações relevantes ao processo de compra.</li>
 </ol>
   <br>
-  Dessa forma, o fluxo completo de interações envolve o cliente web interagindo com as APIs de exibição, autenticação, pré-reserva, checkout e confirmação de reserva. Além disso, há a comunicação com as APIs externas de pagamento e parceiro de reserva lenta para processar o pagamento e realizar operações adicionais, respectivamente.
+  Dessa forma, o fluxo completo de interações envolve o cliente web interagindo com as APIs de exibição, autenticação. As APIs de pré-reserva, checkout e confirmação de reserva devem ser orquestradas por uma outra API ainda a definir. Além disso, há a comunicação com as APIs externas de pagamento e parceiro de reserva lenta para processar o pagamento e realizar operações adicionais, respectivamente.
 </details>
 <br/>
 
@@ -164,9 +164,9 @@ Seguindo boas práticas de desenvolvimento:
 ---
 <a id="desenvolvedores"></a>
 ## :nerd_face: Para Desenvolvedores
-Durante o estudo/desenvolvimento, foram adotadas as ferramentas [Nx](https://nx.dev/) (que requer Nodejs em sua máquina) e seu [console no VScode](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console) para a gestão de Monorepos. Para uma experiência de desenvolvimento e validação técnica do repositório, [sugiro instalação do ambiente de gerenciamento](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Explicar o funcionamento do Nx não é o objetivo do presente documento (até mesmo porque também estou aprendendo.), mas [encorajo a buscar esses dados](https://nx.dev/getting-started/intro) caso deseje. [Qualquer Monorepo pode se tornar um monorepo Nx](https://blog.nrwl.io/adding-nx-to-an-existing-monorepo-by-running-one-command-426fa519d943).
+Nada do que for discutido nessa seção deve atrapalhar o [correto funcionamento e instalação](#computer-instalação) do projeto em uma máquina com o docker-compose funcional
 
-Nada do que foi discutido nessa seção deve atrapalhar o [correto funcionamento e instalação](#computer-instalação) do projeto em uma máquina com o docker-compose funcional
+Durante o estudo/desenvolvimento, foram adotadas as ferramentas [Nx](https://nx.dev/) (que requer Nodejs em sua máquina) e seu [console no VScode](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console) para a gestão de Monorepos. Para uma experiência de desenvolvimento e validação técnica do repositório, [sugiro instalação do ambiente de gerenciamento](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Explicar o funcionamento do Nx não é o objetivo do presente documento (até mesmo porque também estou aprendendo), mas [encorajo a buscar esses dados](https://nx.dev/getting-started/intro) caso deseje. [Qualquer Monorepo pode se tornar um monorepo Nx](https://blog.nrwl.io/adding-nx-to-an-existing-monorepo-by-running-one-command-426fa519d943).
 
 Tenha bons estudos :)
 <!-- `npx nx dep-graph` é MARAVILHOSO -->
