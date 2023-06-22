@@ -1,6 +1,6 @@
 
 # Estudo de Caso: Venda de Ingressos - CineTicket
-[<img src="./docs/images/logo.png"> <img src="./docs/images/icons/nginx.svg" width="25px" height="25px" title="nginx" alt="nginx" style="fill: grey;"> <img src="./docs/images/icons/nodedotjs.svg" width="25px" height="25px" title="Node.js" alt="Node.js"> <img src="./docs/images/icons/go.svg" width="25px" height="25px" title="go" alt="go"> <img src="./docs/images/icons/dotenv.svg" width="25px" height="25px" title="TypeScript" alt="TypeScript"> <img src="./docs/images/icons/express.svg" width="25px" height="25px" title="Express" alt="Express"> <img src="./docs/images/icons/npm.svg" width="25px" height="25px" alt="npm" title="npm"> <img src="./docs/images/icons/docker.svg" width="25px" height="25px" alt="Docker" title="Docker"> <img src="./docs/images/icons/graphql.svg" width="25px" height="25px" alt="graphql" title="graphql"> <img src="./docs/images/icons/github.svg" width="25px" height="25px" alt="GitHub" title="GitHub"> <img src="./docs/images/icons/nx.svg" width="25px" height="25px" alt="NX" title="NX"> <img src="./docs/images/icons/visualstudiocode.svg" width="25px" height="25px" alt="vscode" title="vscode"> <img src="./docs/images/icons/postgresql.svg" width="25px" height="25px" alt="postgresql" title="postgresql"> <img src="./docs/images/icons/bootstrap.svg" width="25px" height="25px" alt="bootstrap" title="bootstrap"> <img src="./docs/images/icons/jquery.svg" width="25px" height="25px" alt="jquery" title="jquery">](#projeto-de-estudo-nodejs-e-typescript)
+[<img src="./docs/images/logo.png"> <img src="./docs/images/icons/nginx.svg" width="25px" height="25px" title="nginx" alt="nginx" style="fill: red;"> <img src="./docs/images/icons/nodedotjs.svg" width="25px" height="25px" title="Node.js" alt="Node.js"> <img src="./docs/images/icons/go.svg" width="25px" height="25px" title="go" alt="go"> <img src="./docs/images/icons/dotenv.svg" width="25px" height="25px" title="TypeScript" alt="TypeScript"> <img src="./docs/images/icons/express.svg" width="25px" height="25px" title="Express" alt="Express"> <img src="./docs/images/icons/npm.svg" width="25px" height="25px" alt="npm" title="npm"> <img src="./docs/images/icons/docker.svg" width="25px" height="25px" alt="Docker" title="Docker"> <img src="./docs/images/icons/graphql.svg" width="25px" height="25px" alt="graphql" title="graphql"> <img src="./docs/images/icons/github.svg" width="25px" height="25px" alt="GitHub" title="GitHub"> <img src="./docs/images/icons/nx.svg" width="25px" height="25px" alt="NX" title="NX"> <img src="./docs/images/icons/visualstudiocode.svg" width="25px" height="25px" alt="vscode" title="vscode"> <img src="./docs/images/icons/postgresql.svg" width="25px" height="25px" alt="postgresql" title="postgresql"> <img src="./docs/images/icons/bootstrap.svg" width="25px" height="25px" alt="bootstrap" title="bootstrap"> <img src="./docs/images/icons/jquery.svg" width="25px" height="25px" alt="jquery" title="jquery">](#projeto-de-estudo-nodejs-e-typescript)
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)  
 
@@ -103,8 +103,10 @@ subgraph Backend
     H[cine-ticket-exibicao-api DB] -->|POSTGRESS| E
     K[cine-ticket-checkout-api DB] -->|POSTGRESS| F
     P[cine-ticket-user-auth-api DB] -->|POSTGRESS| O
+    Q[cine-ticket-reserva DB] -->|POSTGRESS| L
   end
 end
+
 ``` 
 
 <br>
