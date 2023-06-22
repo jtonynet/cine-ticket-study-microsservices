@@ -1,6 +1,6 @@
 
-# Estudo de Caso: Implementação de Arquitetura
-[<img src="./docs/images/logo.png"> <img src="./docs/images/icons/nginx.svg" width="25px" height="25px" title="nginx" alt="nginx"> <img src="./docs/images/icons/nodedotjs.svg" width="25px" height="25px" title="Node.js" alt="Node.js"> <img src="./docs/images/icons/go.svg" width="25px" height="25px" title="go" alt="go"> <img src="./docs/images/icons/dotenv.svg" width="25px" height="25px" title="TypeScript" alt="TypeScript"> <img src="./docs/images/icons/express.svg" width="25px" height="25px" title="Express" alt="Express"> <img src="./docs/images/icons/npm.svg" width="25px" height="25px" alt="npm" title="npm"> <img src="./docs/images/icons/docker.svg" width="25px" height="25px" alt="Docker" title="Docker"> <img src="./docs/images/icons/graphql.svg" width="25px" height="25px" alt="graphql" title="graphql"> <img src="./docs/images/icons/github.svg" width="25px" height="25px" alt="GitHub" title="GitHub"> <img src="./docs/images/icons/nx.svg" width="25px" height="25px" alt="NX" title="NX"> <img src="./docs/images/icons/visualstudiocode.svg" width="25px" height="25px" alt="vscode" title="vscode"> <img src="./docs/images/icons/postgresql.svg" width="25px" height="25px" alt="postgresql" title="postgresql"> <img src="./docs/images/icons/bootstrap.svg" width="25px" height="25px" alt="bootstrap" title="bootstrap"> <img src="./docs/images/icons/jquery.svg" width="25px" height="25px" alt="jquery" title="jquery">](#projeto-de-estudo-nodejs-e-typescript)
+# Estudo de Caso: Venda de Ingressos - CineTicket
+[<img src="./docs/images/logo.png"> <img src="./docs/images/icons/nginx.svg" width="25px" height="25px" title="nginx" alt="nginx" style="fill: grey;"> <img src="./docs/images/icons/nodedotjs.svg" width="25px" height="25px" title="Node.js" alt="Node.js"> <img src="./docs/images/icons/go.svg" width="25px" height="25px" title="go" alt="go"> <img src="./docs/images/icons/dotenv.svg" width="25px" height="25px" title="TypeScript" alt="TypeScript"> <img src="./docs/images/icons/express.svg" width="25px" height="25px" title="Express" alt="Express"> <img src="./docs/images/icons/npm.svg" width="25px" height="25px" alt="npm" title="npm"> <img src="./docs/images/icons/docker.svg" width="25px" height="25px" alt="Docker" title="Docker"> <img src="./docs/images/icons/graphql.svg" width="25px" height="25px" alt="graphql" title="graphql"> <img src="./docs/images/icons/github.svg" width="25px" height="25px" alt="GitHub" title="GitHub"> <img src="./docs/images/icons/nx.svg" width="25px" height="25px" alt="NX" title="NX"> <img src="./docs/images/icons/visualstudiocode.svg" width="25px" height="25px" alt="vscode" title="vscode"> <img src="./docs/images/icons/postgresql.svg" width="25px" height="25px" alt="postgresql" title="postgresql"> <img src="./docs/images/icons/bootstrap.svg" width="25px" height="25px" alt="bootstrap" title="bootstrap"> <img src="./docs/images/icons/jquery.svg" width="25px" height="25px" alt="jquery" title="jquery">](#projeto-de-estudo-nodejs-e-typescript)
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)  
 
@@ -10,7 +10,7 @@
 ## :arrow_heading_up: Índice
 <!--ts-->
 
-- [Estudo de Caso: Implementação de Arquitetura](#estudo-de-caso-implementação-de-arquitetura)
+- [Estudo de Caso: Venda de Ingressos - CineTicket](#estudo-de-caso-venda-de-ingressos---cineticket)
   - [:arrow\_heading\_up: Índice](#arrow_heading_up-índice)
   - [:green\_book: Sobre](#green_book-sobre)
   - [:camera: Imagens](#camera-imagens)
@@ -26,15 +26,17 @@
 <a id="sobre"></a>
 ## :green_book: Sobre
 
-Monorepo para estudo de uma versão da arquitetura proposta no video ["Como fazer o site.x escalar?"](https://www.youtube.com/watch?v=0TMr8rsmU-k)
+Monorepo para estudo de arquitetura de venda de ingressos similar ao video ["Como fazer o ingressos.x escalar?"](https://www.youtube.com/watch?v=0TMr8rsmU-k)
 
-Não busco as melhores soluções nem o cenário perfeito (tudo sempre tem trade-offs). Pretendo resolver questões específicas e criar "APIs Mock" para serviços, com o objetivo de validar hipóteses.
+Não busco as melhores soluções nem o cenário perfeito (tudo sempre tem trade-offs). Pretendo resolver questões específicas e criar "APIs Mock" para serviços, com o objetivo de validar hipóteses e aos poucos escalar para algo totalmente funcional.
 
 Isso é um laboratório de utilização de serviços para solucionar os dois principais problemas propostos pelo video:
 1. Como escalar uma funcionalidade que possui um gargalo do lado do principal fornecedor (a API de reserva de tickets).
 2. Criar uma "antesala" que impeça um "flood" de requisições semelhante a um ataque DDoS.
 
 Além dos mencionados, trabalhar com consistência eventual e implementar um conjunto de "rollbacks" de reserva caso ocorram falhas no pagamento ou na reserva (nas APIs externas "mock"). Tentar evoluir a solução para algo semelhante ao padrão de saga.
+
+Devo criar o projeto aumentando aos poucos seu escopo do zero ao deploy.
 
 Foi utilizado o [template bootstrap gratuito FlixGo](https://www.templateshub.net/template/FlixGo-Online-Movies-Template), algumas alterações serão necessárias, pois o mesmo foi elaborado tendo sistemas de streaming em mente. A princípio, usando JavaScript puro para chamadas de API, aos poucos sendo alteradas para componentes React, aproveitando a versatilidade do gerenciador de monorepos Nx.
 
@@ -78,16 +80,18 @@ O diagramas abaixo ilustra a uma **proposta** de arquitetura para o projeto:
 graph LR
 
 subgraph User
-  A[Cliente Web] -->|HTTP| B[cine-ticket-front-site]
+  A[Cliente Web] -->|HTTP| B[cine-ticket-front-site visualizacao]
+  A -->|HTTP| D[cine-ticket-front-site autenticacao]
+  D -->|HTTP| C[cine-ticket-front-site compra]
 end
 
 subgraph Backend
   subgraph API
-    B -->|HTTP| C[cine-ticket-exibicao-api]
-    B -->|HTTP| D[cine-ticket-user-auth-api]
-    D -->|HTTP| E[cine-ticket-pre-reserva-api]
-    E -->|GRPC| F[cine-ticket-checkout-api]
-    F -->|GRPC| L[cine-ticket-confirma-reserva]
+    B -->|HTTP| E[cine-ticket-exibicao-api]
+    C -->|HTTP| N[cine-ticket-orchestration-api]
+    N -->|GRPC| F[cine-ticket-checkout-api]
+    N -->|GRPC| L[cine-ticket-reserva]
+    D -->|HTTP| O[cine-ticket-user-auth-api]
   end
   
   subgraph MOCK-EXTERNAL-APIs
@@ -96,13 +100,11 @@ subgraph Backend
   end
   
   subgraph Database
-    H[cine-ticket-exibicao-api DB] -->|POSTGRESS| C
-    I[cine-ticket-user-auth-api DB] -->|POSTGRESS| D
-    J[cine-ticket-pre-reserva-api DB] -->|POSTGRESS| E
+    H[cine-ticket-exibicao-api DB] -->|POSTGRESS| E
     K[cine-ticket-checkout-api DB] -->|POSTGRESS| F
+    P[cine-ticket-user-auth-api DB] -->|POSTGRESS| O
   end
 end
-
 ``` 
 
 <br>
@@ -111,22 +113,17 @@ end
 <br/>
 <ol>
   <li>
-    O cliente web <b>(cine-ticket-front-site)</b> faz uma requisição HTTP para a API de exibição <b>(cine-ticket-exibicao-api)</b> para obter informações sobre os filmes em exibição.
+    Acesso à visualização do cine-ticket-front-site: O usuário pode acessar a interface de visualização do cine-ticket-front-site (representado pela seta "Cliente Web" -> "cine-ticket-front-site visualizacao").
   </li>
   <li>
-    O cliente web também faz uma requisição HTTP para a API de autenticação <b>(cine-ticket-user-auth-api)</b> para realizar o login do usuário.
+    Autenticação no cine-ticket-front-site: O usuário pode realizar o processo de autenticação no cine-ticket-front-site (representado pela seta "Cliente Web" -> "cine-ticket-front-site autenticacao" -> "cine-ticket-user-auth-api").
   </li>
   <li>
-    Após o login, o cliente web interage com a API de pré-reserva <b>(cine-ticket-pre-reserva-api)</b> por meio de uma requisição HTTP para selecionar um assento disponível.
+    Compra no cine-ticket-front-site: Após a autenticação, o usuário pode prosseguir com a compra no cine-ticket-front-site (representado pela seta "Cliente Web" -> "cine-ticket-front-site compra" -> "cine-ticket-orchestration-api" -> "cine-ticket-checkout-api" -> "mock-gateway-pagamento-api" e "cine-ticket-confirma-reserva" -> "mock-parceiro-reserva-lento-api").
   </li>
-  <li>A API de pré-reserva <b>(cine-ticket-pre-reserva-api)</b> se comunica com a API de checkout <b>(cine-ticket-checkout-api)</b> por meio de uma comunicação GRPC para iniciar o processo de checkout.</li>
-  <li>A API de checkout <b>(cine-ticket-checkout-api)</b> faz uma requisição HTTP para a API de pagamento <b>(mock-gateway-pagamento-api)</b> para processar o pagamento do assento selecionado.</li>
-  <li>Após o processamento do pagamento, a API de checkout <b>(cine-ticket-checkout-api)</b> faz uma requisição GRPC para a API de confirmação de reserva <b>(cine-ticket-confirma-reserva)</b> para confirmar a reserva do assento.</li>
-  <li>A API de confirmação de reserva <b>(cine-ticket-confirma-reserva)</b> se comunica com a API do parceiro de reserva lenta (mock-parceiro-reserva-lento-api) por meio de uma requisição HTTP para realizar operações adicionais, se necessário.</li>
-  <li>As APIs <b>(cine-ticket-checkout-api)</b> e <b>(cine-ticket-confirma-reserva)</b> se comunicam com seus respectivos bancos de dados para armazenar e recuperar informações relevantes ao processo de compra.</li>
 </ol>
-  <br>
-  Dessa forma, o fluxo completo de interações envolve o cliente web interagindo com as APIs de exibição, autenticação. As APIs de pré-reserva, checkout e confirmação de reserva devem ser orquestradas por uma outra API ainda a definir. Além disso, há a comunicação com as APIs externas de pagamento e parceiro de reserva lenta para processar o pagamento e realizar operações adicionais, respectivamente.
+<br>
+  Dessa forma, o fluxo completo de interações envolve o cliente web interagindo com as APIs de exibição, autenticação. As APIs de checkout e reserva devem ser orquestradas por uma outra API ainda a definir, responsável pelo processo de roolback em caso de falhas.
 </details>
 <br/>
 
