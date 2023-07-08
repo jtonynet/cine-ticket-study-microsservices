@@ -106,11 +106,6 @@ subgraph Backend
     F -->|HTTP| G[mock-payment-gateway-x-service]
     L -->|HTTP| M[mock-provider-x-reservation-slow-service]
   end
-
-  subgraph CACHE
-    
-  end
-
 end
 
 ``` 
