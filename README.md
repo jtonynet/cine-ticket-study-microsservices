@@ -1,6 +1,6 @@
 
 # Estudo de Microsservices para Venda de Ingressos - CineTicket
-[<img src="./docs/images/logo.png"> <br/> <img src="./docs/images/icons/nginx.svg" width="25px" height="25px" title="nginx" alt="nginx"> <img src="./docs/images/icons/nodedotjs.svg" width="25px" height="25px" title="Node.js" alt="Node.js"> <img src="./docs/images/icons/go.svg" width="25px" height="25px" title="go" alt="go"> <img src="./docs/images/icons/dotenv.svg" width="25px" height="25px" title="Dotenv" alt="Dotenv"> <img src="./docs/images/icons/express.svg" width="25px" height="25px" title="Express" alt="Express"> <img src="./docs/images/icons/npm.svg" width="25px" height="25px" alt="npm" title="npm"> <img src="./docs/images/icons/docker.svg" width="25px" height="25px" alt="Docker" title="Docker"> <img src="./docs/images/icons/graphql.svg" width="25px" height="25px" alt="graphql" title="graphql"> <img src="./docs/images/icons/github.svg" width="25px" height="25px" alt="GitHub" title="GitHub"> <img src="./docs/images/icons/nx.svg" width="25px" height="25px" alt="NX" title="NX"> <img src="./docs/images/icons/visualstudiocode.svg" width="25px" height="25px" alt="vscode" title="vscode"> <img src="./docs/images/icons/postgresql.svg" width="25px" height="25px" alt="postgresql" title="postgresql"> <img src="./docs/images/icons/bootstrap.svg" width="25px" height="25px" alt="bootstrap" title="bootstrap"> <img src="./docs/images/icons/jquery.svg" width="25px" height="25px" alt="jquery" title="jquery">](#projeto-de-estudo-nodejs-e-typescript) <!-- icons by https://simpleicons.org/?q=types -->
+[<img src="./docs/images/logo.png"> <br/> <img src="./docs/images/icons/nginx.svg" width="25px" height="25px" title="nginx" alt="nginx"> <img src="./docs/images/icons/nodedotjs.svg" width="25px" height="25px" title="Node.js" alt="Node.js"> <img src="./docs/images/icons/go.svg" width="25px" height="25px" title="go" alt="go"> <img src="./docs/images/icons/dotenv.svg" width="25px" height="25px" title="Dotenv" alt="Dotenv"> <img src="./docs/images/icons/express.svg" width="25px" height="25px" title="Express" alt="Express"> <img src="./docs/images/icons/passport.svg" width="25px" height="25px" title="Passport.js" alt="Passport.js"> <img src="./docs/images/icons/npm.svg" width="25px" height="25px" alt="npm" title="npm"> <img src="./docs/images/icons/docker.svg" width="25px" height="25px" alt="Docker" title="Docker"> <img src="./docs/images/icons/graphql.svg" width="25px" height="25px" alt="graphql" title="graphql"> <img src="./docs/images/icons/github.svg" width="25px" height="25px" alt="GitHub" title="GitHub"> <img src="./docs/images/icons/nx.svg" width="25px" height="25px" alt="NX" title="NX"> <img src="./docs/images/icons/visualstudiocode.svg" width="25px" height="25px" alt="vscode" title="vscode"> <img src="./docs/images/icons/postgresql.svg" width="25px" height="25px" alt="postgresql" title="postgresql"> <img src="./docs/images/icons/bootstrap.svg" width="25px" height="25px" alt="bootstrap" title="bootstrap"> <img src="./docs/images/icons/jquery.svg" width="25px" height="25px" alt="jquery" title="jquery">](#projeto-de-estudo-nodejs-e-typescript) <!-- icons by https://simpleicons.org/?q=types -->
 
 ![Badge Status](https://img.shields.io/badge/STATUS-EM_DESENVOLVIMENTO-green)
 
@@ -80,32 +80,37 @@ O diagramas abaixo ilustra a uma **proposta** de arquitetura para o projeto:
 ```mermaid
 graph LR
 
-subgraph User
-  A[Cliente Web] -->|HTTP| B[cine-ticket-front-site visualizacao]
-  A -->|HTTP| D[cine-ticket-front-site autenticacao]
-  D -->|HTTP| C[cine-ticket-front-site compra]
+subgraph User Flow
+  A[Web Client] -->|HTTP| B[front-site catalog view]
+  A -->|HTTP| D[front-site authentication]
+  D -->|HTTP| C[front-site purchase]
 end
 
 subgraph Backend
   subgraph API
-    B -->|HTTP| E[cine-ticket-exibicao-api]
-    C -->|HTTP| N[cine-ticket-orchestration-api]
-    N -->|GRPC| F[cine-ticket-checkout-api]
-    N -->|GRPC| L[cine-ticket-reserva]
-    D -->|HTTP| O[cine-ticket-user-auth-api]
-  end
-  
-  subgraph MOCK-EXTERNAL-APIs
-    F -->|HTTP| G[mock-gateway-pagamento-api]
-    L -->|HTTP| M[mock-parceiro-reserva-lento-api]
+    B -->|HTTP| E[catalog-service]
+    C -->|HTTP| N[orchestration-service]
+    N -->|GRPC| F[checkout-service]
+    N -->|GRPC| L[ticket-reservation-service]
+    D -->|HTTP| O[authorization-service]
   end
   
   subgraph Database
-    H[cine-ticket-exibicao-api DB] -->|POSTGRESS| E
-    K[cine-ticket-checkout-api DB] -->|POSTGRESS| F
-    P[cine-ticket-user-auth-api DB] -->|POSTGRESS| O
-    Q[cine-ticket-reserva DB] -->|POSTGRESS| L
+    H[catalog-service DB] -->|POSTGRESS| E
+    K[checkout-service DB] -->|POSTGRESS| F
+    P[authorization-service DB] -->|POSTGRESS| O
+    Q[ticket-reservation-service DB] -->|POSTGRESS| L
   end
+
+  subgraph MOCK-EXTERNAL-APIs
+    F -->|HTTP| G[mock-payment-gateway-x-service]
+    L -->|HTTP| M[mock-provider-x-reservation-slow-service]
+  end
+
+  subgraph CACHE
+    
+  end
+
 end
 
 ``` 
