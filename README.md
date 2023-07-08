@@ -1,6 +1,6 @@
 
 # Estudo de Microsservices para Venda de Ingressos - CineTicket
-[<img src="./docs/images/logo.png"> <br/> <img src="./docs/images/icons/nginx.svg" width="25px" height="25px" title="nginx" alt="nginx"> <img src="./docs/images/icons/nodedotjs.svg" width="25px" height="25px" title="Node.js" alt="Node.js"> <img src="./docs/images/icons/go.svg" width="25px" height="25px" title="go" alt="go"> <img src="./docs/images/icons/dotenv.svg" width="25px" height="25px" title="Dotenv" alt="Dotenv"> <img src="./docs/images/icons/express.svg" width="25px" height="25px" title="Express" alt="Express"> <img src="./docs/images/icons/passport.svg" width="25px" height="25px" title="Passport.js" alt="Passport.js"> <img src="./docs/images/icons/npm.svg" width="25px" height="25px" alt="npm" title="npm"> <img src="./docs/images/icons/docker.svg" width="25px" height="25px" alt="Docker" title="Docker"> <img src="./docs/images/icons/graphql.svg" width="25px" height="25px" alt="graphql" title="graphql"> <img src="./docs/images/icons/github.svg" width="25px" height="25px" alt="GitHub" title="GitHub"> <img src="./docs/images/icons/nx.svg" width="25px" height="25px" alt="NX" title="NX"> <img src="./docs/images/icons/visualstudiocode.svg" width="25px" height="25px" alt="vscode" title="vscode"> <img src="./docs/images/icons/postgresql.svg" width="25px" height="25px" alt="postgresql" title="postgresql"> <img src="./docs/images/icons/bootstrap.svg" width="25px" height="25px" alt="bootstrap" title="bootstrap"> <img src="./docs/images/icons/jquery.svg" width="25px" height="25px" alt="jquery" title="jquery">](#projeto-de-estudo-nodejs-e-typescript) <!-- icons by https://simpleicons.org/?q=types -->
+[<img src="./docs/images/logo.png"> <br/> <img src="./docs/images/icons/nginx.svg" width="25px" height="25px" title="Nginx" alt="Nginx"> <img src="./docs/images/icons/nodedotjs.svg" width="25px" height="25px" title="Node.js" alt="Node.js"> <img src="./docs/images/icons/go.svg" width="25px" height="25px" title="Golang" alt="Golang"> <img src="./docs/images/icons/dotenv.svg" width="25px" height="25px" title="Dotenv" alt="Dotenv"> <img src="./docs/images/icons/express.svg" width="25px" height="25px" title="Express" alt="Express"> <img src="./docs/images/icons/passport.svg" width="25px" height="25px" title="Passport.js" alt="Passport.js"> <img src="./docs/images/icons/npm.svg" width="25px" height="25px" alt="npm" title="npm"> <img src="./docs/images/icons/docker.svg" width="25px" height="25px" alt="Docker" title="Docker"> <img src="./docs/images/icons/graphql.svg" width="25px" height="25px" alt="graphql" title="graphql"> <img src="./docs/images/icons/github.svg" width="25px" height="25px" alt="GitHub" title="GitHub"> <img src="./docs/images/icons/nx.svg" width="25px" height="25px" alt="NX" title="NX"> <img src="./docs/images/icons/visualstudiocode.svg" width="25px" height="25px" alt="vscode" title="vscode"> <img src="./docs/images/icons/postgresql.svg" width="25px" height="25px" alt="postgresql" title="postgresql"> <img src="./docs/images/icons/bootstrap.svg" width="25px" height="25px" alt="bootstrap" title="bootstrap"> <img src="./docs/images/icons/jquery.svg" width="25px" height="25px" alt="jquery" title="jquery">](#projeto-de-estudo-nodejs-e-typescript) <!-- icons by https://simpleicons.org/?q=types -->
 
 ![Badge Status](https://img.shields.io/badge/STATUS-EM_DESENVOLVIMENTO-green)
 
@@ -80,26 +80,30 @@ O diagramas abaixo ilustra a uma **proposta** de arquitetura para o projeto:
 ```mermaid
 graph LR
 
-subgraph User Flow
-  A[Web Client] -->|HTTP| B[front-site catalog view]
-  A -->|HTTP| D[front-site authentication]
-  D -->|HTTP| C[front-site purchase]
+subgraph USER FLOW
+  A[[Web Client]] -->|HTTP| B(front-site catalog view)
+  A -->|HTTP| D(front-site authentication)
+  D -->|HTTP| C(front-site purchase)
 end
 
-subgraph Backend
+subgraph BACKEND
   subgraph API
     B -->|HTTP| E[catalog-service]
     C -->|HTTP| N[orchestration-service]
     N -->|GRPC| F[checkout-service]
     N -->|GRPC| L[ticket-reservation-service]
-    D -->|HTTP| O[authorization-service]
+    D <-->|HTTP| O[authorization-service]
   end
   
-  subgraph Database
-    H[catalog-service DB] -->|POSTGRESS| E
-    K[checkout-service DB] -->|POSTGRESS| F
-    P[authorization-service DB] -->|POSTGRESS| O
-    Q[ticket-reservation-service DB] -->|POSTGRESS| L
+  subgraph DATABASE
+    H[(catalog-service DB)] <-->| | E
+    K[(checkout-service DB)] <-->| | F
+    P[(authorization-service DB)] <-->| | O
+    Q[(ticket-reservation-service DB)] <-->| | L
+  end
+  
+  subgraph CACHE
+    E <-->| | R([redis-catalog-cache])
   end
 
   subgraph MOCK-EXTERNAL-APIs
@@ -107,7 +111,6 @@ subgraph Backend
     L -->|HTTP| M[mock-provider-x-reservation-slow-service]
   end
 end
-
 ``` 
 
 <br>
