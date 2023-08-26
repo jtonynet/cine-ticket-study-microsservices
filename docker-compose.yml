@@ -16,12 +16,11 @@ services:
       context: ./packages/cine-ticket-front-site
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 3080:3000
     volumes:
       - ./packages/cine-ticket-front-site/src:/usr/src/app/src
       - ./packages/cine-ticket-front-site/dist:/usr/src/app/dist
-    environment:
-      - PORT=3000
+    env_file: ./packages/cine-ticket-front-site/.env
     command: npm run start:dev
     tty: true
     networks:
