@@ -81,7 +81,7 @@ O diagrama abaixo ilustra a uma **proposta** de arquitetura para o projeto:
 graph LR
 
 subgraph USER FLOW
-  A[[Web Client]] -->|HTTP| B(front-site catalog view)
+  A([Web Client]) -->|HTTP| B(front-site catalog view)
   A -->|HTTP| D(front-site authentication)
   D -->|HTTP| C(front-site purchase)
 end
@@ -103,7 +103,7 @@ subgraph BACKEND
   end
   
   subgraph CACHE
-    E <-->| | R([redis-catalog-cache])
+    E <-->| | R[redis-catalog-cache]
   end
 
   subgraph MOCK-EXTERNAL-APIs
