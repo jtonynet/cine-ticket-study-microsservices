@@ -1,0 +1,7 @@
+{
+  "name": "cine-ticket-front-site",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/cine-ticket-front-site/src",
+  "projectType": "application",
+  "tags": []
+}
