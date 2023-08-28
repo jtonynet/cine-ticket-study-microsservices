@@ -42,4 +42,5 @@ Thumbs.db
 
 package-lock.json
 
-README-SAMPLE.md
+**/dist/
+**/article.md
