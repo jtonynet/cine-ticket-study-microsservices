@@ -26,5 +26,20 @@ services:
     networks:
       - cine-ticket-network
 
+  catalog-service-db:
+    image: postgres:latest
+    container_name: catalog-service-db
+    restart: always
+    environment:
+      POSTGRES_DB: catalog_service_db
+      POSTGRES_USER: catalog_service_user
+      POSTGRES_PASSWORD: catalog_service_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./packages/catalog-service-db/data:/var/lib/postgresql/data
+    networks:
+      - cine-ticket-network
+
 networks:
   cine-ticket-network:
