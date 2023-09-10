@@ -45,7 +45,6 @@ package-lock.json
 **/dist/
 **/article.md
 
-# include only data directories with .gitkeep file, excludes another files
 **/data/*
-!**/data/.gitkeep
+
 
