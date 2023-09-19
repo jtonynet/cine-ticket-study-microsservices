@@ -44,3 +44,7 @@ package-lock.json
 
 **/dist/
 **/article.md
+
+**/data/*
+
+
