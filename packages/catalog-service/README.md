@@ -131,3 +131,6 @@ erDiagram
 ```
 
 [:arrow_heading_up: voltar](#indice)
+
+https://miro.com/app/board/uXjVO6tbeCo=/
+https://www.youtube.com/watch?v=FNDRkG7XK9U
