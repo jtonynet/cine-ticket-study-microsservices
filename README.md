@@ -7,8 +7,6 @@
 -->
 <img 
   src="./docs/images/header.png" 
-  alt="CineCataloGO, Study RESTful APIs in Golang for cinema catalog management"
-  title="CineCataloGO"
 />
 
 <img src="./docs/images/icons/nginx.svg" width="25px" height="25px" title="Nginx" alt="Nginx"> <img src="./docs/images/icons/nodedotjs.svg" width="25px" height="25px" title="Node.js" alt="Node.js"> <img src="./docs/images/icons/npm.svg" width="25px" height="25px" alt="npm" title="npm"> <img src="./docs/images/icons/express.svg" width="25px" height="25px" title="Express" alt="Express"> <img src="./docs/images/icons/docker.svg" width="25px" height="25px" alt="Docker" title="Docker"> <img src="./docs/images/icons/github.svg" width="25px" height="25px" alt="GitHub" title="GitHub"> <img src="./docs/images/icons/nx.svg" width="25px" height="25px" alt="NX" title="NX"> <img src="./docs/images/icons/visualstudiocode.svg" width="25px" height="25px" alt="vscode" title="vscode"> <img src="./docs/images/icons/bootstrap.svg" width="25px" height="25px" alt="bootstrap" title="bootstrap"> <img src="./docs/images/icons/jquery.svg" width="25px" height="25px" alt="jquery" title="jquery"> <!-- icons by https://simpleicons.org/?q=types -->
@@ -32,16 +30,16 @@
 <!--ts-->
 
 - [Estudo de Microsservices para Venda de Ingressos - CineTicket](#estudo-de-microsservices-para-venda-de-ingressos---cineticket)
-      - [🕸️ Minhas Redes:](#️-minhas-redes)
-  - [:arrow\_heading\_up: Índice](#arrow_heading_up-índice)
-  - [:green\_book: Sobre](#green_book-sobre)
-  - [:camera: Imagens](#camera-imagens)
-  - [:computer: Instalação](#computer-instalação)
-  - [:bar\_chart: Diagramas](#bar_chart-diagramas)
-  - [:hammer: Ferramentas](#hammer-ferramentas)
-  - [:clap: Boas Práticas](#clap-boas-práticas)
-  - [:nerd\_face: Para Desenvolvedores](#nerd_face-para-desenvolvedores)
-  - [:1234: Versões](#1234-versões)
+  :arrow_heading_up: [Índice](#arrow_heading_up-índice)<br/>
+  :green_book: [Sobre](#green_book-sobre)<br/>
+  :camera: [Imagens](#camera-imagens)<br/>
+  :computer: [Instalação](#computer-instalação)<br/>
+  :bar_chart: [Diagramas](#bar_chart-diagramas)<br/>
+  :hammer: [Ferramentas](#hammer-ferramentas)<br/>
+  :clap: [Boas Práticas](#clap-boas-práticas)<br/>
+  :nerd_face: [Para Desenvolvedores](#nerd_face-para-desenvolvedores)<br/>
+  :1234: [Versões](#1234-versões)<br/>
+  :robot: [Uso de IA](#ia)
 
 <!--te-->
 ---
@@ -204,6 +202,28 @@ Para obter mais informações, consulte o [Histórico de Versões](./CHANGELOG.m
 
 [:arrow_heading_up: voltar](#indice)
 
+---
 
-https://miro.com/app/board/uXjVO6tbeCo=/
+<a id="ia"></a>
+### :robot: Uso de IA:
 
+O cabeçalho desta página foi criado com a fonte [cinema-st](https://www.dafont.com/pt/cinema-st.font?text=CineTicket&psize=l) e o auxílio de inteligência artificial e um mínimo de 
+retoque e construção no Gimp [<img src="./docs/images/icons/gimp.svg" width="30" height="30" title="Gimp" alt="Logo do Gimp" />](https://www.gimp.org/)
+
+
+__Foram utilizados os seguintes prompts para sua criação no [Bing IA:](https://www.bing.com/images/create/)__
+
+
+<details>
+  <summary><b>Ingresso de cinema com rolo de filme</b></summary>
+<i>"logotipo para um site de venda de ingressos de cinema estilo cartoon simplificado chamado cineticket, UM ingresso de cinema Azul com detalhes vermelhos rodeado por um negativo de rolo de filme de cinema com fundo branco"<b>(sic)</b></i>
+</details>
+
+<br/>
+
+
+IA também é utilizada em minhas pesquisas e estudos como ferramenta de apoio; no entanto, __artes e desenvolvimento são, sobretudo, atividades criativas humanas.__
+
+Contrate artistas para projetos comerciais ou mais elaborados e Aprenda Engenhosidade!
+
+[:arrow_heading_up: voltar](#indice)
