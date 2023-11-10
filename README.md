@@ -29,7 +29,7 @@
 ## :arrow_heading_up: Índice
 <!--ts-->
 
-- [Estudo de Microsservices para Venda de Ingressos - CineTicket](#estudo-de-microsservices-para-venda-de-ingressos---cineticket)
+[Estudo de Microsservices para Venda de Ingressos - CineTicket](#estudo-de-microsservices-para-venda-de-ingressos---cineticket)<br/>
   :arrow_heading_up: [Índice](#arrow_heading_up-índice)<br/>
   :green_book: [Sobre](#green_book-sobre)<br/>
   :camera: [Imagens](#camera-imagens)<br/>
